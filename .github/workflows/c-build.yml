@@ -1,0 +1,26 @@
+name: C Build and Run
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Choose the runner environment (Ubuntu in this case)
+    
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2  # Checkout the repo to the runner
+
+    - name: Set up C Compiler
+      run: sudo apt-get install build-essential  # Install GCC and necessary build tools
+
+    - name: Compile C code
+      run: gcc -o main main.c  # Compile the C file (change file name if needed)
+
+    - name: Run the program
+      run: ./main  # Run the compiled program
+
+    - name: Display output
+      run: ./main  # Optional: display output from the compiled program
